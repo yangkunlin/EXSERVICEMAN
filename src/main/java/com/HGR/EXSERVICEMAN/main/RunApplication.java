@@ -8,7 +8,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  * Date:    2018/6/10
  * Domain:  pla.hc10
  */
-@SpringBootApplication(scanBasePackages = "com.hoping.EXSERVICEMAN.controller")
+@SpringBootApplication(scanBasePackages = "com.HGR.EXSERVICEMAN.controller")
 public class RunApplication {
 
     public static void main(String[] args) {
