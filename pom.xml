@@ -26,7 +26,7 @@
         <servletVersion>3.0-alpha-1</servletVersion>
         <jsonVersion>1.9.13</jsonVersion>
         <jacksonVersion>2.9.4</jacksonVersion>
-        <mysqlVersion>5.1.38</mysqlVersion>
+        <mysqlVersion>6.0.6</mysqlVersion>
         <duridVersion>1.1.9</duridVersion>
         <log4jVersion>2.11.0</log4jVersion>
         <fileuploadVersion>1.3.1</fileuploadVersion>
@@ -34,6 +34,7 @@
         <hbaseVersion>1.4.2</hbaseVersion>
         <jedisVersion>2.9.0</jedisVersion>
         <fastjsonVersion>1.2.8</fastjsonVersion>
+        <mybatisVersion>1.3.1</mybatisVersion>
     </properties>
 
 
@@ -44,10 +45,31 @@
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
 
+        <!-- Springboot 热部署 -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-devtools</artifactId>
+            <optional>true</optional>
+        </dependency>
+
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
+        </dependency>
+
+        <!-- https://mvnrepository.com/artifact/org.mybatis.spring.boot/mybatis-spring-boot-starter -->
+        <dependency>
+            <groupId>org.mybatis.spring.boot</groupId>
+            <artifactId>mybatis-spring-boot-starter</artifactId>
+            <version>${mybatisVersion}</version>
+        </dependency>
+
+        <!-- https://mvnrepository.com/artifact/org.mybatis/mybatis -->
+        <dependency>
+            <groupId>org.mybatis</groupId>
+            <artifactId>mybatis</artifactId>
+            <version>3.4.6</version>
         </dependency>
 
         <!-- Redis -->
@@ -129,6 +151,25 @@
 
                 <artifactId>spring-boot-maven-plugin</artifactId>
 
+            </plugin>
+
+            <!-- 数据库反向生成java -->
+            <plugin>
+                <groupId>org.mybatis.generator</groupId>
+                <artifactId>mybatis-generator-maven-plugin</artifactId>
+                <version>1.3.2</version>
+                <configuration>
+                    <verbose>true</verbose>
+                    <overwrite>true</overwrite>
+                </configuration>
+                <dependencies>
+                    <!-- DataBase数据库连接 mysql包-->
+                    <dependency>
+                        <groupId>mysql</groupId>
+                        <artifactId>mysql-connector-java</artifactId>
+                        <version>${mysqlVersion}</version>
+                    </dependency>
+                </dependencies>
             </plugin>
 
         </plugins>

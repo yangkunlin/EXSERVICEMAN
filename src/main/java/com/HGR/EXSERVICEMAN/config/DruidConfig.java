@@ -11,6 +11,7 @@ import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.boot.web.servlet.ServletRegistrationBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Primary;
 
 import javax.sql.DataSource;
 import java.sql.SQLException;
@@ -75,12 +76,14 @@ public class DruidConfig {
 
     @Bean
     public ServletRegistrationBean druidServlet() {
+        logger.info("init Druid Servlet Configuration ");
         ServletRegistrationBean reg = new ServletRegistrationBean();
         reg.setServlet(new StatViewServlet());
         reg.addUrlMappings("/druid/*");
-        reg.addInitParameter("loginUsername", username);
-        reg.addInitParameter("loginPassword", password);
+        reg.addInitParameter("loginUsername", "admin");
+        reg.addInitParameter("loginPassword", "admin");
         reg.addInitParameter("logSlowSql", logSlowSql);
+        reg.addInitParameter("allow", "");
         return reg;
     }
 
@@ -95,6 +98,7 @@ public class DruidConfig {
     }
 
     @Bean
+    @Primary
     public DataSource druidDataSource() {
         DruidDataSource datasource = new DruidDataSource();
         datasource.setUrl(dbUrl);
