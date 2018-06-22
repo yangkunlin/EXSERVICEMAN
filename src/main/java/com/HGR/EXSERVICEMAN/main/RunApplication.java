@@ -1,11 +1,9 @@
 package com.HGR.EXSERVICEMAN.main;
 
-import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.context.ConfigurableApplicationContext;
 
-import javax.sql.DataSource;
+import java.sql.SQLException;
 
 /**
  * Author:  yangkunlin
@@ -13,14 +11,13 @@ import javax.sql.DataSource;
  * Domain:  pla.hc10
  */
 @SpringBootApplication(scanBasePackages = "com.HGR.EXSERVICEMAN.controller")
-@MapperScan("com.HGR.EXSERVICEMAN.mybatis.dao")
 public class RunApplication {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws SQLException {
 
-        ConfigurableApplicationContext context = SpringApplication.run(RunApplication.class, args);
-        DataSource dataSource = context.getBean(DataSource.class);
-        System.out.println(dataSource.getClass());
+        SpringApplication.run(RunApplication.class, args);
+
+        new Test().test();
 
     }
 

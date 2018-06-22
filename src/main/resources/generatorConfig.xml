@@ -8,7 +8,7 @@
     <context id="DB2Tables" targetRuntime="MyBatis3">
         <commentGenerator>
             <!-- 是否去除自动生成的注释 true：是 ： false:否 -->
-            <property name="suppressAllComments" value="false"/>
+            <property name="suppressAllComments" value="true"/>
             <!-- 不希望生成的注释中包含时间戳 -->
             <property name="suppressDate" value="true"/>
             <!-- 是否  自动为每一个生成的类创建一个构造方法-->
@@ -16,14 +16,14 @@
         </commentGenerator>
         <!--数据库链接地址账号密码-->
         <jdbcConnection driverClass="com.mysql.cj.jdbc.Driver"
-                        connectionURL="jdbc:mysql://localhost:15801/test?useSSL=false&amp;nullNamePatternMatchesAll=true"
-                        userId="root" password="910920">
+                        connectionURL="jdbc:mysql://123.206.67.100:3306/xiyuanfinal?useSSL=false&amp;nullNamePatternMatchesAll=true"
+                        userId="xiyuan" password="xiyuan@XIYUAN.2o18">
         </jdbcConnection>
         <javaTypeResolver>
             <property name="forceBigDecimals" value="false"/>
         </javaTypeResolver>
         <!--生成Model类存放位置-->
-        <javaModelGenerator targetPackage="com.HGR.EXSERVICEMAN.mybatis" targetProject="src/main/java">
+        <javaModelGenerator targetPackage="com.HGR.EXSERVICEMAN.model" targetProject="src/main/java">
             <property name="enableSubPackages" value="true"/>
             <property name="trimStrings" value="true"/>
         </javaModelGenerator>
@@ -32,12 +32,12 @@
             <property name="enableSubPackages" value="true"/>
         </sqlMapGenerator>
         <!--生成Dao类存放位置-->
-        <javaClientGenerator type="XMLMAPPER" targetPackage="com.HGR.EXSERVICEMAN.mybatis.dao"
+        <javaClientGenerator type="XMLMAPPER" targetPackage="com.HGR.EXSERVICEMAN.mapper"
                              targetProject="src/main/java">
             <property name="enableSubPackages" value="true"/>
         </javaClientGenerator>
         <!--生成对应表及类名-->
-        <table tableName="sys_city_areas"  domainObjectName="SysCityAreas" enableCountByExample="false"
+        <table tableName="video"  domainObjectName="Video" enableCountByExample="false"
                enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false"
                selectByExampleQueryId="false"/>
     </context>
